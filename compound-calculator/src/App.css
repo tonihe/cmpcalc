@@ -1,0 +1,15 @@
+.App {
+  box-sizing: border-box;
+  font-family: 'Roboto';
+  text-align: center;
+}
+
+.calcForm { 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+ul {
+  list-style: none;
+}
