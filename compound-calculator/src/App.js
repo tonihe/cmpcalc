@@ -1,6 +1,5 @@
 import './App.css';
 import React,{useState} from 'react';
-import { render } from 'react-dom';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
@@ -11,21 +10,28 @@ function App() {
   const [rate, setRate] = useState();
   const [year, setYear] = useState();
   const [result, setResult] = useState();
-  var byYear;
+  var byYear, dVal;
+  let mappedYear = [];
 
   const Calculate = () => {
 
     // R = A(1+(R/N)^Y)^(NY)
     const result = amount * Math.pow(1 + rate, year);
     setResult(result.toFixed(2))
-    console.log(result)
     for(var i = 0; i < year; i++){
       byYear = amount * Math.pow(1 + rate, i);
+      mappedYear.push(byYear.toFixed(2));
+      if(i > 0){
+        dVal = mappedYear[i] - mappedYear[i - 1]; 
+        console.log(dVal.toFixed(2));
+      }
+      
       console.log("Year " + i + " : " + byYear.toFixed(2));
       var ul = document.getElementById("list");
       var li = document.createElement("p");
-      li.appendChild(document.createTextNode("Year " + i + " : " + byYear.toFixed(2)));
+      li.appendChild(document.createTextNode("Year " + i + " : " + " $" + byYear.toFixed(2)));
       ul.appendChild(li);
+     
     }
   }
   
